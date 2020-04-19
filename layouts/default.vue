@@ -1,5 +1,10 @@
 <template>
-  <div>
+  <div id="app">
+    <div id="nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/Fish">Fish</router-link>
+      <router-link to="/Bugs">Bugs</router-link>
+    </div>
     <nuxt />
   </div>
 </template>
@@ -186,8 +191,6 @@ h1{
         &.active{
           background: $brown;
           color: $gold;
-          // background-image: url('~@/assets/play-dots.png');
-          // background-size: 36px 34.5px;
         }
       }
     }

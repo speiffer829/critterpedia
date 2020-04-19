@@ -3,7 +3,7 @@
     <div class="img-bar" :style="{backgroundColor: imgColor}">
       <div class="img-align">
         <div class="img-circle" :style="{backgroundColor: imgColor}">
-          <img :src="`/fish/${fish.img}.png`" alt="fish">
+          <img :src="imgGet" :alt="fish.title" lazy>
         </div>
       </div>
     </div>
@@ -11,18 +11,18 @@
     
     <div class="months">
       <p class="head">Months</p>
-      <span :class="{'active' : jan}">Jan</span>
-      <span :class="{'active' : feb}">Feb</span>
-      <span :class="{'active' : mar}">Mar</span>
-      <span :class="{'active' : apr}">Apr</span>
-      <span :class="{'active' : may}">May</span>
-      <span :class="{'active' : jun}">Jun</span>
-      <span :class="{'active' : jul}">Jul</span>
-      <span :class="{'active' : aug}">Aug</span>
-      <span :class="{'active' : sept}">Sept</span>
-      <span :class="{'active' : oct}">Oct</span>
-      <span :class="{'active' : nov}">Nov</span>
-      <span :class="{'active' : dec}">Dec</span>
+      <span :class="{ 'active' : fish.months.includes('jan') }">Jan</span>
+      <span :class="{ 'active' : fish.months.includes('feb') }">Feb</span>
+      <span :class="{ 'active' : fish.months.includes('mar') }">Mar</span>
+      <span :class="{ 'active' : fish.months.includes('apr') }">Apr</span>
+      <span :class="{ 'active' : fish.months.includes('may') }">May</span>
+      <span :class="{ 'active' : fish.months.includes('jun') }">Jun</span>
+      <span :class="{ 'active' : fish.months.includes('jul') }">Jul</span>
+      <span :class="{ 'active' : fish.months.includes('aug') }">Aug</span>
+      <span :class="{ 'active' : fish.months.includes('sept') }">Sept</span>
+      <span :class="{ 'active' : fish.months.includes('oct') }">Oct</span>
+      <span :class="{ 'active' : fish.months.includes('nov') }">Nov</span>
+      <span :class="{ 'active' : fish.months.includes('dec') }">Dec</span>
     </div>
 
     <div class="times">
@@ -67,7 +67,7 @@
 
     <div class="price" :style="{backgroundColor: imgColor}">
       <!-- <p class="head">Price</p> -->
-      <p class="stat">${{ prettNum(fish.price) }}</p>
+      <p class="stat">${{ prettNum }}</p>
     </div>
   </div>
 </template>
@@ -77,49 +77,40 @@
 export default {
   name: 'Card',
   props:{
-    fish: Object
-  },
-  data() {
-    return {
-      imgColor: '',
-      jan: false,
-      feb: false,
-      mar: false,
-      apr: false,
-      may: false,
-      jun: false,
-      jul: false,
-      aug: false,
-      sept: false,
-      oct: false,
-      nov: false,
-      dec: false,
-      img: `/fish/${this.fish.img}.png`,
-      publicPath: process.env.BASE_URL,
+    fish: {
+      type: Object,
+      required: true,
+      default: {
+        title: 'Fishie',
+        price: 0,
+        location: 'unknown',
+        months: [],
+        times: [],
+      }
     }
   },
-  mounted() {
-    const price = this.fish.price;
-    if(price >= 10000){
-      this.imgColor = '#FCCC1F';
-    }else if(price >= 5000){
-      this.imgColor = '#B6A2C8';
-    }else if(price >= 1000){
-      this.imgColor = '#74A1D2';
-    }else{
-      this.imgColor = '#D1DB63';
-    }
-
-    this.fish.months.forEach(month => {
-      this[month] = true;
-    });
-  },
-  methods: {
-    prettNum(num){
+  computed: {
+    imgGet(){
+      return require(`../assets/fish/${this.fish.img}.png`);
+    },
+    imgColor(){
+      const price = this.fish.price;
+      if(price >= 10000){
+        return '#FCCC1F';
+      }else if(price >= 5000){
+        return '#B6A2C8';
+      }else if(price >= 1000){
+        return '#74A1D2';
+      }else{
+        return '#D1DB63';
+      }
+    },
+    prettNum(){
+      const num = this.fish.price
       var num_parts = num.toString().split(".");
       num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       return num_parts.join(".");
-    }
+    },
   },
 }
 </script>
