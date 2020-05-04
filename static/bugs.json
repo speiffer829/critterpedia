@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Agrias Butterfly",
+    "months": ["apr", "may", "jun", "jul", "aug", "sept"],
+    "times": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+    "price": 3000,
+    "location": "flying",
+    "img":"Agrias_Butterfly"
+  }, 
+  {
+    "title": "Ant",
+    "months": ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sept", "oct", "nov", "dec"],
+    "times": [0,1,2,3,4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22,23,24],
+    "price": 80,
+    "location": "rotton food",
+    "img":"Ant"
+  },
+  {
+    "title": "Atlas Moth",
+    "months": ["apr", "may", "jun", "jul", "aug", "sept"],
+    "times": [0,1,2,3,4, 19, 20, 21,22,23,24],
+    "price": 3000,
+    "location": "on trees",
+    "img":"Atlas_Moth"
+  },
+  {
+    "title": "Bagworm",
+    "months": ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sept", "oct", "nov", "dec"],
+    "times": [0,1,2,3,4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22,23,24],
+    "price": 600,
+    "location": "shaking trees",
+    "img":"Bagworm"
+  },
+  {
+    "title": "Banded Dragonfly",
+    "months": ["may", "jun", "jul", "aug", "sept", "oct"],
+    "times": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+    "price": 4500,
+    "location": "flying",
+    "img":"Banded_Dragonfly"
+  },
+  {
+    "title": "Bell Cricket",
+    "months": ["sept", "oct"],
+    "times": [0,1,2,3,4, 5, 6, 7, 8, 17, 18, 19, 20, 21,22,23,24],
+    "price": 430,
+    "location": "on ground",
+    "img":"Bell_Cricket"
+  },
+  {
+    "title": "Blue Weevil Beetle",
+    "months": ["jul", "aug"],
+    "times": [0,1,2,3,4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22,23,24],
+    "price": 800,
+    "location": "on palm trees",
+    "img":"Blue_Weevil_Beetle"
+  }
+]
