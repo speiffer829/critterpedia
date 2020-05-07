@@ -12,7 +12,7 @@
     "months": ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sept", "oct", "nov", "dec"],
     "times": [0,1,2,3,4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22,23,24],
     "price": 80,
-    "location": "rotton food",
+    "location": "rotten food",
     "img":"Ant"
   },
   {
@@ -388,7 +388,7 @@
     "months": ["jan", "feb", "mar", "apr", "may", "nov", "dec"],
     "times": [0,1,2,3,4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22,23,24],
     "price": 500,
-    "location": "undergroud",
+    "location": "underground",
     "img":"Mole_Cricket"
   },
   {
