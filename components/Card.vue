@@ -10,19 +10,21 @@
     <p class="title">{{ critter.title }}</p>
     
     <div class="months">
-      <p class="head">Months</p>
-      <span :class="{ 'active' : critter.months.includes('jan') }">Jan</span>
-      <span :class="{ 'active' : critter.months.includes('feb') }">Feb</span>
-      <span :class="{ 'active' : critter.months.includes('mar') }">Mar</span>
-      <span :class="{ 'active' : critter.months.includes('apr') }">Apr</span>
-      <span :class="{ 'active' : critter.months.includes('may') }">May</span>
-      <span :class="{ 'active' : critter.months.includes('jun') }">Jun</span>
-      <span :class="{ 'active' : critter.months.includes('jul') }">Jul</span>
-      <span :class="{ 'active' : critter.months.includes('aug') }">Aug</span>
-      <span :class="{ 'active' : critter.months.includes('sept') }">Sept</span>
-      <span :class="{ 'active' : critter.months.includes('oct') }">Oct</span>
-      <span :class="{ 'active' : critter.months.includes('nov') }">Nov</span>
-      <span :class="{ 'active' : critter.months.includes('dec') }">Dec</span>
+      <div class="months-grid">
+        <p class="head">Months</p>
+        <span :class="{ 'active' : critter.months.includes('jan') }">Jan</span>
+        <span :class="{ 'active' : critter.months.includes('feb') }">Feb</span>
+        <span :class="{ 'active' : critter.months.includes('mar') }">Mar</span>
+        <span :class="{ 'active' : critter.months.includes('apr') }">Apr</span>
+        <span :class="{ 'active' : critter.months.includes('may') }">May</span>
+        <span :class="{ 'active' : critter.months.includes('jun') }">Jun</span>
+        <span :class="{ 'active' : critter.months.includes('jul') }">Jul</span>
+        <span :class="{ 'active' : critter.months.includes('aug') }">Aug</span>
+        <span :class="{ 'active' : critter.months.includes('sept') }">Sept</span>
+        <span :class="{ 'active' : critter.months.includes('oct') }">Oct</span>
+        <span :class="{ 'active' : critter.months.includes('nov') }">Nov</span>
+        <span :class="{ 'active' : critter.months.includes('dec') }">Dec</span>
+      </div>
     </div>
 
     <div class="times">
