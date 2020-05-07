@@ -1,15 +1,16 @@
 <template>
-  <div class="card">
+  <div class="card" @click="expanded = !expanded">
     <div class="img-bar" :style="{backgroundColor: imgColor}">
       <div class="img-align">
         <div class="img-circle" :style="{backgroundColor: imgColor}">
           <img :src="imgGet" :alt="critter.title" lazy>
+          <span class="active-dot" :style="{backgroundColor: isActive}"></span>
         </div>
       </div>
     </div>
     <p class="title">{{ critter.title }}</p>
     
-    <div class="months">
+    <div class="months" :class="{'expanded' : expanded}">
       <div class="months-grid">
         <p class="head">Months</p>
         <span :class="{ 'active' : critter.months.includes('jan') }">Jan</span>
@@ -27,7 +28,7 @@
       </div>
     </div>
 
-    <div class="times">
+    <div class="times" :class="{'expanded' : expanded}">
       <div class="time-grid">
         <p class="head">Time Active</p>
         <span :class="{ 'active' : critter.times.includes(1) }">1 am</span>
@@ -57,12 +58,12 @@
       </div>
     </div>
 
-    <div class="location">
+    <div class="location" :class="{'expanded' : expanded}">
       <p class="head">Location</p>
       <p class="stat">{{ critter.location }}</p>
     </div>
 
-    <div class="size">
+    <div class="size" :class="{'expanded' : expanded}">
       <p class="head">Size</p>
       <p class="stat">{{ critter.size }}</p>
     </div>
@@ -95,6 +96,11 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      expanded: false
+    }
+  },
   computed: {
     imgGet(){
       return require(`../assets/${this.critterType}/${this.critter.img}.png`);
@@ -118,6 +124,57 @@ export default {
       num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       return num_parts.join(".");
     },
+    isActive(){
+      const rightNow = new Date();
+      const nowHour = rightNow.getHours();
+      const nowMonth = rightNow.getMonth();
+      const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sept", "oct", "nov", "dec"];
+
+      if(this.critter.months.includes(months[nowMonth]) && this.critter.times.includes(nowHour)){
+        return '#00A144';
+      }else{
+        return '#5c5c5c';
+      }
+    }
   },
 }
 </script>
+
+<style lang="scss">
+  .card{
+    cursor: pointer;
+  }
+  .img-circle{
+    position: relative;
+  }
+  .active-dot{
+    width: 12px;
+    height: 12px;
+    background: #5c5c5c;
+    border: solid 2px #fff;
+    border-radius: 100px;
+    position: absolute;
+    right: 8px;
+    bottom: 0;
+  }
+
+  .months,.times{
+    transition: height 250ms;
+    overflow: hidden;
+    height: 0;
+
+    &.expanded{
+      height: 467px;
+    }
+  }
+
+  .location, .size{
+    transition: height 250ms;
+    overflow: hidden;
+    height: 0;
+
+    &.expanded {
+      height: 83px;
+    }
+  }
+</style>

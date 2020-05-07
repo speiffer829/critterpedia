@@ -9,7 +9,9 @@
     </div>
     
     <div class="animal-grid" v-if="!loading">
-      <Card v-for="fish of activeList" :key="fish.title" :critter="fish" :critterType="'fish'" />
+      <div class="card-contain" v-for="fish of activeList" :key="fish.title">
+        <Card :critter="fish" :critterType="'fish'" />
+      </div>
       <!-- <img :src="`/fish/${fish.img}.png`" alt="" v-for="fish of activeList" :key="fish.title"> -->
       
     </div>

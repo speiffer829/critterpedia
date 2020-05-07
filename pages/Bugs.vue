@@ -1,6 +1,6 @@
 <template>
   <div id="bugs">
-    <h1>Bug</h1>
+    <h1>Bugs</h1>
 
     <div class="search-contain">
       <button @click="filterActive = !filterActive">Only Active: {{ filterActive ? 'On' : 'Off' }}</button>
@@ -9,7 +9,9 @@
     </div>
     
     <div class="animal-grid" v-if="!loading">
-      <Card v-for="bug of activeList" :key="bug.title" :critter="bug" critterType="bugs" />
+      <div class="card-contain" v-for="bug of activeList" :key="bug.title">
+        <Card :critter="bug" critterType="bugs" />
+      </div>
       <!-- <img :src="`/bug/${bug.img}.png`" alt="" v-for="bug of activeList" :key="bug.title"> -->
       
     </div>
