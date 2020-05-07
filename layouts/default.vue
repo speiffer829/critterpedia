@@ -88,7 +88,34 @@ h1{
 .search-contain{
   max-width: 960px;
   width: 95%;
-  margin: 20px auto;
+  margin: 40px auto 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+
+  button{
+    font-weight: bold;
+    background-color: $brown;
+    color: $gold;
+    text-shadow: 1px 1px 3px darken($brown, 10%);
+    background-image: url('~@/assets/play-dots.png');
+    background-size: 36px 34.5px;
+    padding: 0.6rem;
+    text-decoration: none;
+    font-family: $headFont;
+    border-radius: 0.6rem;
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0px 2px 5px darken($green, 15%);
+    transition: all 250ms;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    @media screen and (min-width: 767px) {
+      font-size: 1.5rem;
+    }
+  }
 
   input{
     width: 100%;
@@ -98,9 +125,10 @@ h1{
     background: $tan;
     color: $brown;
     border: solid 3px $brown;
-    border-radius: 10px;
+    border-radius: .6rem;
     box-sizing: border-box;
     display: block;
+    grid-column: span 2;
   }
 }
 

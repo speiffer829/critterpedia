@@ -3,11 +3,13 @@
     <h1>Bug</h1>
 
     <div class="search-contain">
+      <button @click="filterActive = !filterActive">Only Active: {{ filterActive ? 'On' : 'Off' }}</button>
+      <button @click="holdon">More Filters</button>
       <input type="text" placeholder="Search" v-model="search" class="search-bar">
     </div>
     
     <div class="animal-grid" v-if="!loading">
-      <Card v-for="bug of bugList" :key="bug.title" :critter="bug" v-show="activeList.includes(bug.title)" critterType="bugs" />
+      <Card v-for="bug of activeList" :key="bug.title" :critter="bug" critterType="bugs" />
       <!-- <img :src="`/bug/${bug.img}.png`" alt="" v-for="bug of activeList" :key="bug.title"> -->
       
     </div>
@@ -34,7 +36,8 @@ export default {
       loading: true,
       search: '',
       activeNow: true,
-      months: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sept", "oct", "nov", "dec"]
+      months: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sept", "oct", "nov", "dec"],
+      filterActive: true,
     }
   },
   async beforeMount() {
@@ -45,7 +48,7 @@ export default {
       const self = this;
       await bugies.forEach(bug => {
         if(bug.months.includes(this.months[nowMonth]) && bug.times.includes(nowHour)){
-          self.nowActiveList.push(bug.title);
+          self.nowActiveList.push(bug);
         }
       })
       this.activeList = this.nowActiveList;
@@ -53,6 +56,9 @@ export default {
       this.loading = false;
       
     },
+    holdon(){
+      alert('this isnt ready yet')
+    }
   },
   watch: {
     search: function() {
@@ -63,11 +69,14 @@ export default {
         return bug.title.toLowerCase().indexOf(self.search.toLowerCase()) >= 0;
       });
       templist.forEach(bug => {
-        this.activeList.push(bug.title);
+        this.activeList.push(bug);
       })
       }else if(this.search.length < 3 && this.activeList.length !== this.nowActiveList.length){
         this.activeList = this.nowActiveList;
       }
+    },
+    filterActive: function () {
+      this.activeList = this.filterActive == true ? this.nowActiveList : this.bugList;
     }
   },
 }

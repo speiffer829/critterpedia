@@ -5,7 +5,7 @@
 
     <article>
       <h3>What Is This?</h3>
-      <p>An unofficail Critterpedia app based off Animal Crossing New Horizons. If you are reading this then odds are your name is either Ann, Nate, or Tina. If its not then please please please don't tell Nintendo. If you work for Nintendo then please don't sue me. This took me too long to make and frankly I don't want to hire a lawyer. Ok go look at the animals. If you see an error please <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0" target="_blank">click here</a></p>
+      <p>An unofficail Critterpedia app based off Animal Crossing New Horizons. If you are reading this then odds are your name is either Anna, Nate, or Tina. If its not then please please please don't tell Nintendo. If you work for Nintendo then please don't sue me. This took me too long to make and frankly I don't want to hire a lawyer. Ok go look at the animals. If you see an error please <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0" target="_blank">click here</a></p>
     </article>
   </div>
 </template>
