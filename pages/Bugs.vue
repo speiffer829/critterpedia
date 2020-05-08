@@ -4,7 +4,8 @@
 
     <div class="search-contain">
       <button @click="filterActive = !filterActive">Only Active: {{ filterActive ? 'On' : 'Off' }}</button>
-      <button @click="holdon">More Filters</button>
+      <button @click="newThisMonth" v-if="!filtersOn">New This Month</button>
+      <button @click="filtersOn = false; activeList = nowActiveList;" v-if="filtersOn">Clear Filter</button>
       <input type="text" placeholder="Search" v-model="search" class="search-bar">
     </div>
     
@@ -27,6 +28,11 @@ const nowHour = rightNow.getHours();
 const nowMonth = rightNow.getMonth();
 export default {
   name: 'Bugs',
+  head(){
+    return{
+      title: 'Bugs'
+    }
+  },
   components:{
     Card
   },
@@ -40,6 +46,7 @@ export default {
       activeNow: true,
       months: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sept", "oct", "nov", "dec"],
       filterActive: true,
+      filtersOn: false
     }
   },
   async beforeMount() {
@@ -60,6 +67,17 @@ export default {
     },
     holdon(){
       alert('this isnt ready yet')
+    },
+    newThisMonth(){
+      this.filtersOn = true;
+      const lastMonth = nowMonth - 1 >= 0 ? nowMonth - 1 : 12;
+      this.activeList = [];
+      const self = this;
+      this.bugList.forEach(item => {
+        if(!item.months.includes(self.months[lastMonth]) && item.months.includes(self.months[nowMonth])){
+          self.activeList.push(item)
+        }
+      })
     }
   },
   watch: {
@@ -78,6 +96,7 @@ export default {
       }
     },
     filterActive: function () {
+      this.filtersOn = false;
       this.activeList = this.filterActive == true ? this.nowActiveList : this.bugList;
     }
   },

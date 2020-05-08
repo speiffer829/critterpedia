@@ -4,7 +4,7 @@
       <div class="img-align">
         <div class="img-circle" :style="{backgroundColor: imgColor}">
           <img :src="imgGet" :alt="critter.title" lazy>
-          <span class="active-dot" :style="{backgroundColor: isActive}"></span>
+          <span class="active-dot" v-if="isActive"></span>
         </div>
       </div>
     </div>
@@ -131,9 +131,11 @@ export default {
       const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sept", "oct", "nov", "dec"];
 
       if(this.critter.months.includes(months[nowMonth]) && this.critter.times.includes(nowHour)){
-        return '#00A144';
+        // return '#00A144';
+        return true
       }else{
-        return '#5c5c5c';
+        // return '#5c5c5c';
+        return false
       }
     }
   },
@@ -150,7 +152,7 @@ export default {
   .active-dot{
     width: 12px;
     height: 12px;
-    background: #5c5c5c;
+    background: #00A144;
     border: solid 2px #fff;
     border-radius: 100px;
     position: absolute;

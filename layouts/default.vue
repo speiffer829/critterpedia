@@ -9,6 +9,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  head(){
+    return{
+      titleTemplate: '%s | Critterpoo',
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 @import '@/assets/global.scss';
 
@@ -359,5 +369,43 @@ h1{
       }
     }
   }
+
+
+
+
+  //transitions
+  //====================================================
+  
+  .page-enter-active, .page-leave-active {
+    transition: all 500ms;
+    transform-origin: top;
+  }
+  .page-enter, .page-leave-to {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+
+  .critter-grid-leave-active {
+  position: absolute;
+  width: 100%;
+}
+.critter-grid-enter, .critter-grid-leave-to {
+  // transform: scale(0.1);
+  opacity: 0;
+  transition: all 250ms;
+}
+
+.critter-grid-item{
+  transition: all 250ms;
+}
+
+.critter-grid-move{
+  transition: all 250ms 500ms;
+}
+
+
+  
+  //END transitions====================================================
 
 </style>

@@ -10,6 +10,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  head(){
+    return{
+      title: 'Welcome Lawyers!'
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 @import '@/assets/global.scss';
 
