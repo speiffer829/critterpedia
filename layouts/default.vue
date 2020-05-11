@@ -404,6 +404,17 @@ h1{
   transition: all 250ms 500ms;
 }
 
+.reorder-enter, .reorder-leave-to{
+  opacity: 0;
+}
+
+.reorder-leave-active, .reorder-enter-active{
+  transition: opacity 500ms;
+}
+
+.reorder-move{
+  transition: transform 1s 600ms;
+}
 
   
   //END transitions====================================================
