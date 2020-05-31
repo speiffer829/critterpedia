@@ -1,10 +1,14 @@
 <template>
   <div class="filters">
     <div class="search-contain">
-        <button @click="filterActive = !filterActive">Only Active: {{ filterActive ? 'On' : 'Off' }}</button>
+        <button @click="activeList = critters; filtersOn = true;" v-if="!filtersOn">Show All</button>
+        <button @click="activeThisMonth" v-if="!filtersOn">Active This Month</button>
         <button @click="newThisMonth" v-if="!filtersOn">New This Month</button>
-        <button @click="filtersOn = false; activeList = nowActiveList;" v-if="filtersOn">Clear Filter</button>
+        <button @click="newNextMonth" v-if="!filtersOn">New Next Month</button>
+        <button @click="filtersOn = false; activeList = nowActiveList; search=''; currentFilter='Currently Active'" v-if="filtersOn" class="clear-btn">Clear Filter</button>
         <input type="text" placeholder="Search" v-model="search" class="search-bar" />
+
+        <p class="current-filter" v-if="currentFilter">Showing: "{{ currentFilter }}"</p>
     </div>
   </div>
 </template>
@@ -27,6 +31,7 @@ export default {
       search: '',
       activeList: [],
       nowActiveList: [],
+      currentFilter: 'Currently Active'
     }
   },
   mounted() {
@@ -43,11 +48,35 @@ export default {
     newThisMonth(){
       this.filtersOn = true;
       const lastMonth = nowMonth - 1 >= 0 ? nowMonth - 1 : 12;
+      this.currentFilter = `New For ${this.months[nowMonth]}`;
       this.activeList = [];
       const self = this;
       this.critters.forEach(item => {
         if(!item.months.includes(self.months[lastMonth]) && item.months.includes(self.months[nowMonth])){
           self.activeList.push(item)
+        }
+      })
+    },
+    newNextMonth(){
+      this.filtersOn = true;
+      const nextMonth = nowMonth + 1 <= 12 ? nowMonth + 1 : 1;
+      this.currentFilter = `New In ${this.months[nextMonth]}.`;
+      this.activeList = [];
+      const self = this;
+      this.critters.forEach(item => {
+        if(item.months.includes(self.months[nextMonth]) && !item.months.includes(self.months[nowMonth])){
+          self.activeList.push(item)
+        }
+      })
+    },
+    activeThisMonth(){
+      this.filtersOn = true;
+      const self = this;
+      this.activeList = [];
+      this.currentFilter = `Currently Active in ${this.months[nowMonth]}.`;
+      this.critters.forEach(critter => {
+        if(critter.months.includes(this.months[nowMonth])){
+         self.activeList.push(critter);
         }
       })
     }
@@ -58,6 +87,8 @@ export default {
     },
     search: function() {
       if(this.search.length >= 3){
+        this.currentFilter = `Search For ${this.search}`;
+        this.filtersOn = true;
       var self = this;
       this.activeList = [];
       let templist = self.critters.filter(function(critter) {
@@ -68,18 +99,29 @@ export default {
       })
       }else if(this.search.length < 3 && this.activeList.length !== this.nowActiveList.length){
         this.activeList = this.nowActiveList;
+        this.filtersOn = false;
+        this.currentFilter = 'Currently Active';
       }
     },
-    filterActive: function () {
-      this.filtersOn = false;
-      const activeList = this.filterActive == true ? this.nowActiveList : this.critters;
-      this.$emit('filtered', activeList);
-    }
   },
 }
 </script>
 
 
-<style>
+<style lang="scss">
+@import '@/assets/global.scss';
+  .clear-btn{
+    grid-column: span 2;
+  }
   
+  .current-filter{
+    text-align: center;
+    font-size: 1.5rem;
+    color: $gold !important;
+    grid-column: span 2;
+    font-family: $headFont;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 10px 0;
+  }
 </style>

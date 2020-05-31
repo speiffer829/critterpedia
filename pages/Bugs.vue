@@ -4,7 +4,7 @@
 
     <Filters :critters="bugList" @filtered="setFilter"/>
     
-    <div class="animal-grid" v-if="!loading">
+    <div class="animal-grid">
       <div class="card-contain" v-for="bug of activeList" :key="bug.title">
         <Card :critter="bug" critterType="bugs" />
       </div>
@@ -15,7 +15,7 @@
 
 <script>
 import Card from '@/components/Card.vue';
-import Filters from '@/components/Filters'
+import Filters from '@/components/Filters';
 import bugies from '~/static/bugs.json';
 const rightNow = new Date();
 const nowHour = rightNow.getHours();
@@ -36,21 +36,18 @@ export default {
       activeList: [],
       nowActiveList: [],
       bugList:[],
-      loading: true,
       search: '',
       activeNow: true,
-      months: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sept", "oct", "nov", "dec"],
       filterActive: true,
       filtersOn: false
     }
   },
-  async beforeMount() {
+  beforeMount() {
     this.addBug();
   },
   methods: {
-    addBug(){
+    async addBug(){
       this.bugList = bugies;
-      this.loading = false;
     },
     setFilter(filteredList){
       this.activeList = filteredList;
@@ -58,5 +55,3 @@ export default {
   },
 }
 </script>
-
-
