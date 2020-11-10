@@ -3,7 +3,7 @@
     <div class="img-bar" :style="{backgroundColor: imgColor}">
       <div class="img-align">
         <div class="img-circle" :style="{backgroundColor: imgColor}">
-          <img :src="imgGet" :alt="critter.title" lazy>
+          <img :src="imgGet" :alt="critter.title" lazy loading="lazy">
           <span class="active-dot" v-if="isActive"></span>
         </div>
       </div>

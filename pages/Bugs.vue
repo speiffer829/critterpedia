@@ -5,9 +5,10 @@
     <Filters :critters="bugList" @filtered="setFilter"/>
     
     <div class="animal-grid">
-      <div class="card-contain" v-for="bug of activeList" :key="bug.title">
-        <Card :critter="bug" critterType="bugs" />
-      </div>
+      
+        <div class="card-contain" v-for="bug of activeList" :key="bug.title">
+          <Card :critter="bug" critterType="bugs" />
+        </div>
     </div>
   </div>
 </template>
