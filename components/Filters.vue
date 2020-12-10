@@ -59,7 +59,8 @@ export default {
     },
     newNextMonth(){
       this.filtersOn = true;
-      const nextMonth = nowMonth + 1 <= 12 ? nowMonth + 1 : 1;
+      const nextMonth = nowMonth + 1 <= 11 ? nowMonth + 1 : 0;
+      console.log( nextMonth )
       this.currentFilter = `New In ${this.months[nextMonth]}.`;
       this.activeList = [];
       const self = this;
