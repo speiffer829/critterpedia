@@ -1,7 +1,7 @@
 <template>
   <div class="filters">
     <div class="search-contain">
-        <button @click="activeList = critters; filtersOn = true;" v-if="!filtersOn">Show All</button>
+        <button @click="activeList = critters; filtersOn = true;" v-if="!filtersOn">Show Currently Active</button>
         <button @click="activeThisMonth" v-if="!filtersOn">Active This Month</button>
         <button @click="newThisMonth" v-if="!filtersOn">New This Month</button>
         <button @click="newNextMonth" v-if="!filtersOn">New Next Month</button>
