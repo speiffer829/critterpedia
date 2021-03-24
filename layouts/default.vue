@@ -1,20 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/Fish">Fish</router-link>
-      <router-link to="/Bugs">Bugs</router-link>
+    <div id="page">
+      <div id="nav">
+        <router-link to="/">Home</router-link>
+        <router-link to="/Fish">Fish</router-link>
+        <router-link to="/Bugs">Bugs</router-link>
+      </div>
+      <nuxt />
     </div>
-    <nuxt />
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from '../components/Footer'
 export default {
   head(){
     return{
       titleTemplate: '%s | Critterpoo',
     }
+  },
+  components: {
+    Footer
   }
 }
 </script>
@@ -33,6 +40,17 @@ body{
   font-family: $font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  #page{
+    flex: 1 1 auto;
+  }
+
+  #footer{
+    flex: 0 0 auto;
+  }
 }
 
 h1{
